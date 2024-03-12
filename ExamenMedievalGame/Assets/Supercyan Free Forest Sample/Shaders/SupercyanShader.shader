@@ -2,8 +2,8 @@ Shader "Supercyan/SupercyanShader"
 {
 	Properties
 	{
-		_Color("Color", Color) = (1,1,1,1)
-		_MainTex("Albedo (RGB)", 2D) = "white" {}
+		_Color("Color", Color) = (211,213,19,255)
+		_MainTex("Albedo (RGB)", 2D) = "gold" {}
 	}
 		SubShader
 		{
