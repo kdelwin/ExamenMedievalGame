@@ -26,7 +26,7 @@ public class PickUpObject : MonoBehaviour
         }
         else if (PickedObject != null)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
             {
                 PickedObject.GetComponent<PickableObject>().isPickable = true;
                 PickedObject.transform.SetParent(null);

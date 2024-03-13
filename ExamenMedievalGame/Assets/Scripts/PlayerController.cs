@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,9 +33,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         player = GetComponent<CharacterController>();
-
-
-
     }
 
     // Update is called once per frame
@@ -84,6 +83,18 @@ public class PlayerController : MonoBehaviour
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerSpeed = playerSpeed * 2;
+            jumpForce = (float)(jumpForce * 1.5);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerSpeed = playerSpeed / 2;
+            jumpForce = (float)(jumpForce / 1.5);
+        }
+
     }
 
     void SetGravity()
@@ -120,4 +131,5 @@ public class PlayerController : MonoBehaviour
     {
         hitNormal = hit.normal;
     }
+
 }
