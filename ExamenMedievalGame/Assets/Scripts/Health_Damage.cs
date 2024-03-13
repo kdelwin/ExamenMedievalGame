@@ -28,29 +28,28 @@ public class Health_Damage : MonoBehaviour
 
     public void restarVida(int cantidad)
     {
-        if (!invincible && hp > 0)
+        if (hp > 0)
         {
             hp -= cantidad;
-            StartCoroutine(Invulnerabilidad());
         }
-        if(hp == 0)
+
+        if (hp == 0)
         {
-            transform.position = new Vector3(65.324f, 1.035f, 61.445f);
             vidas--;
-            if(vidas == 2)
+
+            if (vidas == 2)
             {
                 EliminarVida3();
             }
-            if(vidas == 1)
+            else if (vidas == 1)
             {
                 EliminarVida2();
             }
-        }
-        if(vidas == 0)
-        {
-            transform.position = new Vector3(65.324f, 1.035f, 61.445f);
-            EliminarVida1();
-            MostrarImagenGameOver();
+            else if (vidas == 0)
+            {
+                EliminarVida1();
+                MostrarImagenGameOver();
+            }
         }
     }
 
@@ -70,6 +69,10 @@ public class Health_Damage : MonoBehaviour
         if (Life2 != null)
         {
             Life2.gameObject.SetActive(false);
+
+            PickUpObject pickUpScript = GetComponent<PickUpObject>();
+            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            Debug.Log("ReiniciarPosicion llamado");
         }
         else
         {
@@ -81,6 +84,10 @@ public class Health_Damage : MonoBehaviour
         if (Life3 != null)
         {
             Life3.gameObject.SetActive(false);
+
+            PickUpObject pickUpScript = GetComponent<PickUpObject>();
+            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            Debug.Log("ReiniciarPosicion llamado");
         }
         else
         {
@@ -93,26 +100,44 @@ public class Health_Damage : MonoBehaviour
         if (Life1 != null)
         {
             Life1.gameObject.SetActive(false);
+
+            PickUpObject pickUpScript = GetComponent<PickUpObject>();
+            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            Debug.Log("ReiniciarPosicion llamado");
         }
         else
         {
             Debug.LogError("La referencia de Image no está asignada en el Inspector.");
         }
     }
-
-
-    IEnumerator Invulnerabilidad()
+    private void Update()
     {
-        invincible = true;
-        yield return new WaitForSeconds(tiempo_invencible);
-        invincible = false;
+        if (imagenGameOver.gameObject.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                reiniciarJuego();
+            }
+        }
     }
 
-    IEnumerator FrenarVelocidad()
+    private void reiniciarJuego()
     {
-        var velocidadActual = GetComponent<PlayerController>().playerSpeed;
-        GetComponent<PlayerController>().playerSpeed = 0;
-        yield return new WaitForSeconds(tiempo_frenado);
-        GetComponent<PlayerController>().playerSpeed = velocidadActual;
+        Debug.Log("Se activó el método");
+        imagenGameOver.gameObject.SetActive(false);
+        vidas = 3;
+        Life1.gameObject.SetActive(true);
+        Life2.gameObject.SetActive(true);
+        Life3.gameObject.SetActive(true);
+
+        PickUpObject pickUpScript = GetComponent<PickUpObject>();
+
+        // Llama primero a ReactivarObjetosDesactivados
+        pickUpScript.ReactivarObjetosDesactivados();
+        Debug.Log("ReactivarObjetosDesactivados llamado");
+
+        // Luego, llama a ReiniciarPosicion
+        pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+        Debug.Log("ReiniciarPosicion llamado");
     }
 }

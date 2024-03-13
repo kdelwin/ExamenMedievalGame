@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour
 
         player.Move(movePlayer  * Time.deltaTime);
 
-        Debug.Log(player.velocity.magnitude);
-
     }
 
    void camDirection()
