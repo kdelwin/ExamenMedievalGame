@@ -14,7 +14,7 @@ public class PickableObject : MonoBehaviour
             other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
         }
     }
-    private void OntriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.tag == "PlayerInteractionZone")
         {
