@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController player;
     public float playerSpeed;
+    public GameObject Player1, Player2;
     public float gravity = 9.8f;
     public float fallVelocity;
     public float jumpForce;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 camRight;
     private Vector3 movePlayer;
 
+    public Image selectPlayer;
 
     public bool isOnSlope = false;
     private Vector3 hitNormal;
@@ -57,6 +59,19 @@ public class PlayerController : MonoBehaviour
         PlayerSkills();
 
         player.Move(movePlayer  * Time.deltaTime);
+
+        if (selectPlayer.gameObject.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1)){
+                selectPlayer.gameObject.SetActive(false);
+                Player1.gameObject.SetActive(true);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                selectPlayer.gameObject.SetActive(false);
+                Player2.gameObject.SetActive(true);
+            }
+        }
 
     }
 

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: Plataform
   m_Shader: {fileID: 4800000, guid: d56c3230b6db1c6499606e09fe9f60d4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -78,6 +78,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.30933315, g: 0.8037735, b: 0.24719821, a: 0.75686276}
+    - _Color: {r: 0.5245282, g: 0.5245282, b: 0.5245282, a: 0.75686276}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

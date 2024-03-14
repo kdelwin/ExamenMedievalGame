@@ -17,6 +17,7 @@ public class PickUpObject : MonoBehaviour
     public TextMeshProUGUI GreenGemsValue;
     public TextMeshProUGUI BlueGemsValue;
     public Image MissionImage;
+    public Image youWin;
 
     public Transform jugador;
     public GameObject Gplayer;
@@ -25,6 +26,7 @@ public class PickUpObject : MonoBehaviour
 
     void Update()
     {
+        YouWin();
         if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().isPickable == true && PickedObject == null)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -59,6 +61,17 @@ public class PickUpObject : MonoBehaviour
         {
             MissionImageShowDisapear();
         }
+
+        if (youWin.gameObject.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Health_Damage health = GetComponent<Health_Damage>();
+                youWin.gameObject.SetActive(false);
+                health.reiniciarJuego();
+            }
+        }
+
     }
 
     public void MissionTextRedGems()
@@ -97,14 +110,23 @@ public class PickUpObject : MonoBehaviour
         MissionTextGreenGems();
         MissionTextBlueGems();
     }
-    public void ReiniciarPosicion(Vector3 nuevaPosicion)
+    public void ReiniciarPosicion()
     {
         Debug.Log("ReiniciarPosicion llamado");
 
 
         Gplayer.SetActive(false);
-        jugador.position = new Vector3(65.324f, 1.035f, 61.445f);
+        jugador.position = new Vector3(65.324f, 1.393f, 61.445f);
         Gplayer.SetActive(true);
     }
 
+    public void YouWin()
+    {
+        if (RedGems == 3 && GreenGems == 3 && BlueGems == 3)
+        {
+            ReactivarObjetosDesactivados();
+            ReiniciarPosicion();
+            youWin.gameObject.SetActive(true);
+        }
+    }
 }

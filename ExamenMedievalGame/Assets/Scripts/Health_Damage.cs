@@ -71,7 +71,7 @@ public class Health_Damage : MonoBehaviour
             Life2.gameObject.SetActive(false);
 
             PickUpObject pickUpScript = GetComponent<PickUpObject>();
-            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            pickUpScript.ReiniciarPosicion();
             Debug.Log("ReiniciarPosicion llamado");
         }
         else
@@ -86,7 +86,7 @@ public class Health_Damage : MonoBehaviour
             Life3.gameObject.SetActive(false);
 
             PickUpObject pickUpScript = GetComponent<PickUpObject>();
-            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            pickUpScript.ReiniciarPosicion();
             Debug.Log("ReiniciarPosicion llamado");
         }
         else
@@ -102,7 +102,7 @@ public class Health_Damage : MonoBehaviour
             Life1.gameObject.SetActive(false);
 
             PickUpObject pickUpScript = GetComponent<PickUpObject>();
-            pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+            pickUpScript.ReiniciarPosicion();
             Debug.Log("ReiniciarPosicion llamado");
         }
         else
@@ -121,7 +121,7 @@ public class Health_Damage : MonoBehaviour
         }
     }
 
-    private void reiniciarJuego()
+    public void reiniciarJuego()
     {
         Debug.Log("Se activó el método");
         imagenGameOver.gameObject.SetActive(false);
@@ -135,7 +135,7 @@ public class Health_Damage : MonoBehaviour
         pickUpScript.ReactivarObjetosDesactivados();
         Debug.Log("ReactivarObjetosDesactivados llamado");
 
-        pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
+        pickUpScript.ReiniciarPosicion();
         Debug.Log("ReiniciarPosicion llamado");
     }
 }
