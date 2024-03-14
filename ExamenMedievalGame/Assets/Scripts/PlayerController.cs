@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 camRight;
     private Vector3 movePlayer;
 
+
     public bool isOnSlope = false;
     private Vector3 hitNormal;
     public float slideVelocity;
