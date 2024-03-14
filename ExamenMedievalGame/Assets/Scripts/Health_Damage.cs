@@ -132,11 +132,9 @@ public class Health_Damage : MonoBehaviour
 
         PickUpObject pickUpScript = GetComponent<PickUpObject>();
 
-        // Llama primero a ReactivarObjetosDesactivados
         pickUpScript.ReactivarObjetosDesactivados();
         Debug.Log("ReactivarObjetosDesactivados llamado");
 
-        // Luego, llama a ReiniciarPosicion
         pickUpScript.ReiniciarPosicion(new Vector3(65.324f, 1.035f, 61.445f));
         Debug.Log("ReiniciarPosicion llamado");
     }

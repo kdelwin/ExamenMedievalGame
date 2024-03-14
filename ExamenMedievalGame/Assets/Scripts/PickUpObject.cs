@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PickUpObject : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PickUpObject : MonoBehaviour
     public TextMeshProUGUI GreenGemsValue;
     public TextMeshProUGUI BlueGemsValue;
     public Image MissionImage;
+
+    public Transform jugador;
+    public GameObject Gplayer;
 
     private List<GameObject> deactivatedObjects = new List<GameObject>();
 
@@ -96,10 +100,11 @@ public class PickUpObject : MonoBehaviour
     public void ReiniciarPosicion(Vector3 nuevaPosicion)
     {
         Debug.Log("ReiniciarPosicion llamado");
-        transform.position = nuevaPosicion;
 
-        // Agrega un mensaje de depuración para verificar la posición después de la asignación
-        Debug.Log("Nueva posición: " + transform.position);
+
+        Gplayer.SetActive(false);
+        jugador.position = new Vector3(65.324f, 1.035f, 61.445f);
+        Gplayer.SetActive(true);
     }
 
 }
